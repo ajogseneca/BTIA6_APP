@@ -16,6 +16,7 @@ export default function MainNav() {
   const token = readToken();
 
   const handleSubmit = async (event) => {
+    
     event.preventDefault();
     setIsExpanded(false);
     setSearchHistory(await addToHistory(`title=true&q=${searchField}`));
@@ -81,12 +82,12 @@ export default function MainNav() {
             {!token && (
               <Nav className="ml-auto">
                 <Link href="/register" passHref legacyBehavior>
-                  <Nav.Link onClick={() => setIsExpanded(false)} active={router.pathname === "/register"}>
+                  <Nav.Link onClick={handleNavLink} active={router.pathname === "/register"}>
                     Register
                   </Nav.Link>
                 </Link>
                 <Link href="/login" passHref legacyBehavior>
-                  <Nav.Link onClick={() => setIsExpanded(false)} active={router.pathname === "/login"}>
+                  <Nav.Link onClick={handleNavLink} active={router.pathname === "/login"}>
                     Login
                   </Nav.Link>
                 </Link>
